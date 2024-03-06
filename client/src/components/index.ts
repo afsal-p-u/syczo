@@ -3,13 +3,10 @@ import SwiperBox from './home/SwiperBox'
 import NewArrivals from './home/HomeMajorCategory'
 import NavbarItems from './NavbarItems'
 import Categories from './Categories'
-import CategoriesItem from './CategoriesItem'
-import Footer from './Footer'
-import ItemView from './ItemView'
-import ItemInfo from './ItemInfo'
-import BagItem from './BagItem'
+import ProductCard from './ProductCard'
 import Search from './Search'
+import Signup from './SignUp'
 
 export {
-    Navbar, SwiperBox, NavbarItems, Categories, CategoriesItem, Footer, NewArrivals, ItemView, ItemInfo, BagItem, Search
+    Navbar, SwiperBox, NavbarItems, Categories, ProductCard, NewArrivals, Search, Signup
 }

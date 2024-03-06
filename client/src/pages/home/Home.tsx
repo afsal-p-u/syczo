@@ -1,12 +1,11 @@
 import { useState } from 'react'
-import { Categories, NewArrivals, SwiperBox } from '../../components'
+import { SwiperBox } from '../../components'
 import { HomeAllCategories } from '../../utils/CategoriesData'
 import HomeCategoryItem from '../../components/home/HomeCategoryItem'
 import HomeMajorCategory from '../../components/home/HomeMajorCategory'
 import { TodaysDealCategoryData } from '../../utils/MajorCategoryData'
 
 const Home = () => {
-  const [selected, setSelected] = useState<string>('male')
   
   return (
     <>
@@ -21,6 +20,7 @@ const Home = () => {
 
           {/* Todays deals */}
           {/* <HomeMajorCategory name={"New Arrivals"} items={TodaysDealCategoryData} /> */}
+          <HomeMajorCategory name={"Recently Added"} items={TodaysDealCategoryData} />
           <HomeMajorCategory name={"Todays Best Deals"} items={TodaysDealCategoryData} />
         </div>
     </>

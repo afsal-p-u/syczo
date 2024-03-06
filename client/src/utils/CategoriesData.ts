@@ -15,10 +15,10 @@ export const HomeAllCategories = [
     //     image: img2,
     //     name: "Laptops"
     // },
-    // {
-    //     image: img3,
-    //     name: "Shoes"
-    // },
+    {
+        image: img3,
+        name: "Shoes"
+    },
     // {
     //     image: img4,
     //     name: "T-Shirts"

@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
-import { nanoid } from "nanoid";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
-const CategoriesItem = ({ item }: any) => {
- 
+const ProductCard = ({ item }: any) => {
   return (
-    <Link to="/product" state={{item}}>
+    <div>
       <div
         className="w-[210px] min-h-[270px] cursor-pointer rounded-lg shadow-md 
         border-[1px]"
@@ -44,8 +42,8 @@ const CategoriesItem = ({ item }: any) => {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
-export default CategoriesItem;
+export default ProductCard;

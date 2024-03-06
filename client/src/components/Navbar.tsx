@@ -61,9 +61,8 @@ const Navbar = () => {
       <div className="center-end gap-7 relative">
         {/* <AiOutlineHeart size={30} className='cursor-pointer hover:text-[var(--third-color)]' /> */}
         {token ? '': (
-          <Link to='/login'>
-            <CiLogin size={28} className='cursor-pointer hover:text-[var(--third-color)]' />
-          </Link>
+          <CiLogin size={28} className='cursor-pointer hover:text-[var(--third-color)]' />
+          
         )}
         <Link to="/bag">
           <div className="relative">

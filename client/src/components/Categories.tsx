@@ -1,40 +1,65 @@
-import { useState, useEffect } from "react";
-import { CategoriesItem } from ".";
+import { useState, useEffect, useRef } from "react";
+import { ProductCard } from ".";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
-const Categories = ({ type, items }: { type?: string, items: any }) => {
+const Categories = ({ type, items }: { type?: string; items: any }) => {
   const [pixel, setPixel] = useState(window.innerWidth);
-  // const { items } = useAllProductContext()
 
-  useEffect(() => {
-    const handleResize = () => {
-      setPixel(window.innerWidth);
-    };
+  const [scrollPosition, setScrollPosition] = useState(0)
+  const [scrollWidth, setScrollWidth] = useState(0)
+  const containerRef = useRef(null);
+  
+  const handleScroll = () => {
+    const scrollDiv: any = containerRef.current;
+    setScrollPosition(scrollDiv.scrollLeft)
+    setScrollWidth(scrollDiv.scrollWidth);
+    console.log(scrollPosition);
+    console.log(scrollWidth);
+  };
 
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const calculateSlidesPerView = () => {
-    if (pixel <= 640) {
-      return 1;
-    } else if (pixel <= 768) {
-      return 2;
-    } else if (pixel <= 1024) {
-      return 3;
-    } else if (pixel <= 1280) {
-      return 4;
+  
+  const handleScrollControl = (side: string) => {
+    const scrollDiv: any = containerRef.current;
+    if (side == "left") {
+      scrollDiv.scrollLeft -= 230;
     } else {
-      return 5;
-    }
+      scrollDiv.scrollLeft += 230;
+    } 
   };
 
   return (
-    <div className="flex gap-5 overflow-x-scroll">
-      {items.map((item: any, i: number) => (
-        <CategoriesItem item={item} key={i} />
-      ))}
+    <div className="relative">
+      <div
+        className="category-horizontal-slidebar flex gap-5 overflow-x-scroll"
+        id="category-horizonal-scroll"
+        ref={containerRef}
+        onScroll={handleScroll}
+      >
+        {items.map((item: any, i: number) => (
+          <ProductCard item={item} key={i} />
+        ))}
+      </div>
+
+      {scrollPosition <= 210 ? (
+        ""
+      ) : (
+        <div
+          className="absolute top-[50%] left-[-50px] translate-y-[-50%]"
+          onClick={() => handleScrollControl("left")}
+        >
+          <FaChevronLeft className="text-blue-500 text-4xl cursor-pointer" />
+        </div>
+      )}
+      {scrollPosition >= scrollWidth / 2 - 230 ? (
+        ""
+      ) : (
+        <div
+          className="absolute top-[50%] right-[-50px] translate-y-[-50%]"
+          onClick={() => handleScrollControl("right")}
+        >
+          <FaChevronRight className="text-blue-500 text-4xl cursor-pointer" />
+        </div>
+      )}
     </div>
   );
 };
